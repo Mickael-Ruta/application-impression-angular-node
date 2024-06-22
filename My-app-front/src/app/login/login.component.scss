@@ -1,0 +1,60 @@
+.input-field{
+  margin: 10px 2px;
+  fieldset{
+    height: 60px;
+    padding: 2px 8px;
+    border: 1px solid blue;
+    border-radius:30px;
+    legend{
+      margin-left: 1px;
+      color: grey;
+    }
+    input{
+      border: none;
+      height: 30px !important;
+      &:focus{
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+button{
+  margin: 8px 10px;
+}
+
+.image{
+  margin-top: 90px;
+}
+.form{
+  animation: fadeIn 1.5s linear 1 ;
+ .titre{
+  margin-bottom: 20px;
+ }
+ button{
+  border-radius: 10px;
+ }
+}
+#chargement{
+  overflow: hidden;
+  margin-top: 100px;
+  border-radius: 10px;
+
+}
+.spinner{
+  border-color: #01579b;
+}
+p{
+  &.left{
+    font-size: 20px;
+  }
+}
+
+@keyframes fadeIn {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+
+}

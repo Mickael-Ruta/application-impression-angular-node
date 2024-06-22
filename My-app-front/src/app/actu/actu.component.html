@@ -1,0 +1,78 @@
+<div class="col xl12 frais">
+  <div class="card white col xl3 offset-xl1">
+    <div class="card-content white-text">
+      <div class="col xl10 center light-blue-text text-darken-4">
+        <p>Etudiants inscrit</p>
+        @if (nbreEtuInscrit$) {
+        <p>{{ nbreEtuInscrit$ | async }}</p>
+        }
+      </div>
+      <div class="col xl2">
+        <i
+          class="bx bx-user-check blue lighten-4 light-blue-text text-darken-4 radius"
+        ></i>
+      </div>
+    </div>
+  </div>
+  <div class="card white col xl3">
+    <div class="card-content blue-text text-darken-3">
+      <div class="col xl10 center">
+        <p>Attestation fait</p>
+        @if (nbreAttestation$) {
+        <p>{{ nbreAttestation$ | async }}</p>
+        }
+      </div>
+      <div class="col xl2 blue-text">
+        <i class="bx bx-file blue lighten-4 radius"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="card white col xl3">
+    <div class="card-content green-text">
+      <div class="col xl10 center">
+        <p>Carte d'etudiant</p>
+        @if (nbreCEimprimer$) {
+        <p>{{ nbreCEimprimer$ | async }}</p>
+        }
+      </div>
+      <div class="col xl2 green-text">
+        <i class="bx bx-id-card green lighten-4 radius"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col xl10 offset-xl1">
+  <div class="col xl6 " style="margin: 0px 0px;">
+    <div class="col xl12 white chart z-depth-1">
+      <canvas #etuChart id="etuchart"></canvas>
+    </div>
+  </div>
+
+  <div class="col xl5" style="padding:0px 0px 0px 15px ">
+    <div class="col xl12 white z-depth-1" >
+      <table class="highlight">
+        <thead>
+          <tr>
+            <th class="center">N°</th>
+            <th class="center">Nom</th>
+            <th class="center">Prenoms</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of (lastAddEtu); track $index) {
+          <tr>
+            <td class="center">{{ item.matricule }}</td>
+            <td class="center">{{ item.nom | uppercase}}</td>
+            <td class="center">{{ item.prenom | titlecase}}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <div class="col xl12 z-depth-1 " style="margin-top: 20px; height: 220px">
+      <canvas id="nbrEtu" #mychart></canvas>
+    </div>
+
+  </div>
+</div>

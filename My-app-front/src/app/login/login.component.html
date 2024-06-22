@@ -1,0 +1,170 @@
+<div class="row">
+  <div class="col xl8 offset-xl2 image">
+    <div class="col xl6">
+      <img
+        src="../../assets/Security.gif"
+        alt=""
+        srcset=""
+        class="responsive-img"
+      />
+    </div>
+    <div class="col xl5 form">
+      <div class="col xl11 offset-xl1 titre">
+        <h4 class="light-blue-text text-darken-4">
+          {{ isLogin ? "Connexion" : "Créer un compte" }}
+        </h4>
+      </div>
+      @if(isLogin){
+      <form
+        action=""
+        class="login"
+        [formGroup]="connexionForm"
+        (submit)="connexion()"
+      >
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input
+            type="text"
+            id="numTel"
+            placeholder=""
+            minlength="10"
+            maxlength="10"
+            formControlName="numTel"
+          />
+          <label for="numTel" class="active">Numero telephone</label>
+          <i class="bx bx-phone prefix"></i>
+        </div>
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input
+            [type]="mdpView ? 'text' : 'password'"
+            id="mdp"
+            placeholder=""
+            formControlName="password"
+          />
+          <label for="mdp" class="active">Mot de passe</label>
+          <i
+            class="bx prefix"
+            [class]="mdpView ? 'bx-show' : 'bx-hide'"
+            (click)="showMdp()"
+          ></i>
+        </div>
+        <div class="col xl10 offset-xl1 center-align">
+          <button
+            type="submit"
+            class="btn-small waves-effect waves-light light-blue darken-4 white-text"
+            (click)="connexion()"
+          >
+            <b> connexion </b>
+          </button>
+        </div>
+        <div class="col xl10 offset-xl1 center-align">
+          <button
+            type="button"
+            class="btn-small waves-effect waves-darken light-blue-text text-darken-4 white"
+            (click)="goToCreate()"
+          >
+            <b> creer un compte </b>
+          </button>
+        </div>
+      </form>
+      } @else {
+      <form
+        action=""
+        class="create"
+        [formGroup]="createForm"
+        (submit)="creation()"
+      >
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input
+            type="file"
+            id="image"
+            placeholder="image"
+            formControlName="image"
+            (blur)="getImage($event)"
+            #image
+          />
+          <label for="mdp" class="active">Image</label>
+        </div>
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input type="text" id="nom" placeholder="" formControlName="nom" />
+          <label for="nom" class="active">Nom</label>
+          <i class="bx bx-user prefix"></i>
+        </div>
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input
+            type="text"
+            id="prenom"
+            placeholder=""
+            formControlName="prenom"
+          />
+          <label for="prenom" class="active">Prenoms</label>
+          <i class="bx bx-user prefix"></i>
+        </div>
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input
+            type="text"
+            id="numTel"
+            placeholder=""
+            minlength="10"
+            maxlength="10"
+            formControlName="numTel"
+          />
+          <label for="numTel" class="active">Numero telephone</label>
+          <i class="bx bx-phone prefix"></i>
+        </div>
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input
+            [type]="mdpView ? 'text' : 'password'"
+            id="mdp"
+            placeholder=""
+            formControlName="password"
+          />
+          <label for="mdp" class="active">Mot de passe</label>
+          <i
+            class="bx prefix"
+            [class]="mdpView ? 'bx-show' : 'bx-hide'"
+            (click)="showMdp()"
+          ></i>
+        </div>
+
+        <div class="col xl10 offset-xl1 center-align">
+          <button
+            type="submit"
+            class="btn-small waves-effect waves-light light-blue darken-4 white-text"
+          >
+            <b> Creer le compte </b>
+          </button>
+        </div>
+        <div class="col xl10 offset-xl1 center-align">
+          <button
+            type="button"
+            class="btn-small waves-effect waves-darken light-blue-text text-darken-4 white"
+            (click)="leaveCreate()"
+          >
+            <b> j'ai un compte </b>
+          </button>
+        </div>
+      </form>
+      }
+    </div>
+  </div>
+  <div id="chargement" class="modal col xl2 offset-xl5 center" #modal>
+    <div class="col xl7">
+      <p class="left">Connexion</p>
+    </div>
+    <div class="col xl4 offset-xl1" style="margin-top: 20px !important">
+      <div class="preloader-wrapper small active">
+        <div class="spinner-layer spinner">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

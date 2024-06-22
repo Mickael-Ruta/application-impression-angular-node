@@ -1,0 +1,27 @@
+.modal{
+  border-radius: 5px;
+}
+.btn-search{
+  position: relative;
+  top: 25px;
+}
+img{
+  margin-top: 20%;
+}
+
+table{
+  tbody{
+    tr{
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+}
+.spinner{
+  border-color: #01579b;
+}
+
+.col{
+  border-radius: 5px;
+}

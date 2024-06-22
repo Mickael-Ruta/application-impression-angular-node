@@ -1,0 +1,106 @@
+.my-class{
+  height: 50px;
+  border-radius: 100%;
+  padding-top: 12px;
+  border:1px solid black;
+}
+.margin{
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.step{
+  height: 150px !important;
+  width: 150px !important;
+  background-color: 1px solid black;
+  margin-right: 25px;
+}
+
+.btn{
+  margin-bottom: 25px;
+  margin-top: 15px;
+}
+.display-none{
+  display: none !important;
+}
+
+.etape1{
+  @for $i from 1 through 6{
+    .input-field:nth-child(#{$i}){
+      animation: fade linear 1;
+      animation-duration: 0.3s * $i;
+    }
+  }
+}
+.etape2{
+  @for $i from 1 through 5{
+    .input-field:nth-child(#{$i}){
+      animation: fade linear 1;
+      animation-duration: 0.3s * $i;
+    }
+  }
+}
+.etape3{
+  @for $i from 1 through 4{
+    .input-field:nth-child(#{$i}){
+      animation: fade linear 1;
+      animation-duration: 0.3s * $i;
+    }
+  }
+}
+.etape4{
+  @for $i from 1 through 5{
+    .input-field:nth-child(#{$i}){
+      animation: fade linear 1;
+      animation-duration: 0.3s * $i;
+    }
+  }
+}
+
+@keyframes fade {
+  0%{
+    opacity: 0;
+    transform: translateY(-100px);
+
+  }50%{
+    transform: translateY(0px);
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.toast{
+  position: absolute;
+  right: 1px;
+}
+
+.retour{
+  font-size: 30px;
+  border-radius: 10%;
+  &:hover{
+    cursor: pointer;
+    background-color: rgba(122, 204, 236, 0.295);
+    transition:1s;
+  }
+}
+.indicator{
+  margin-right: 8%;
+  &:first-child{
+    margin-left: 10%;
+  }
+}
+
+#btn-cam{
+  &:hover{
+    cursor: pointer;
+  }
+}
+#ce{
+
+}
+
+.col{
+  border-radius: 5px;
+}

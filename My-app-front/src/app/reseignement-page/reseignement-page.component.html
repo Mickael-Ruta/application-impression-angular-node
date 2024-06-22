@@ -1,0 +1,184 @@
+<div class="row" style="margin-bottom: 0px; margin-top: 5px;">
+  <div class="col xl3">
+    <select [(ngModel)]="selectedNiveau">
+      <option *ngFor="let niveau of niveaux" [value]="niveau">{{ niveau }}</option>
+    </select>
+  </div>
+  <div class="col xl3">
+    <select [(ngModel)]="selectedParcours">
+      <option *ngFor="let parcours of parcours" [value]="parcours">{{ parcours }}</option>
+    </select>
+  </div>
+  <div class="col xl3">
+    <input type="number" name="" id="" placeholder="nombre" [(ngModel)]="nombre">
+  </div>
+  <div class="col xl2">
+    <button class="btn waves-effect waves-light light-blue white-text" style="margin-top: 7px;" (click)="generateFiches()">Imprimer</button>
+  </div>
+</div>
+
+<div class="fiche_renseignement">
+  <div class="header">
+    <div class="header-left">
+      <div class="image">
+        <img src="../../assets/emit.jpg" alt="">
+      </div>
+      <p>UNIVERSITE DE FIANARANTSOA</p>
+    </div>
+    <div class="right-header">
+      <p>
+        ECOLE DE MANAGEMENT ET D'INNOVATION <br />
+        TECHNOLOGIQUE <br />
+        E.M.I.T <br />
+        TEL : 034 87 042 - BP : 1135 <br />
+        E.mail : renseignementemit.mg <br />
+        Site web : www.emit.mg
+      </p>
+    </div>
+  </div>
+
+  <div class="title">
+    <br />
+    <div class="text">
+      <p>FICHE DE RENSEIGNEMENT</p>
+      <p>ANNEE UNIVERSITAIRE : 2023 - 2024</p>
+      <p>INSCRIPTION EN
+        @if (selectedNiveau==="L1") {
+          <span>PREMIERE ANNEE DE </span> <span>LICENCE</span>
+        } @else if (selectedNiveau==='L2') {
+          <span>DEUXIEME ANNEE DE </span> <span>LICENCE</span>
+        } @else if (selectedNiveau==='L3') {
+          <span>TROISIEME ANNEE DE </span> <span>LICENCE</span>
+        }@else if (selectedNiveau==='M2') {
+          <span>DEUXIEME ANNEE DE </span> <span>MASTER</span>
+        } @else {
+          <span>PREMIERE ANNEE DE </span> <span>MASTER</span>
+        }
+      </p>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class="body">
+    <h6>
+      <b
+      >MENTION :
+      @if (selectedParcours==='DA2I') {
+        <span>DEVELOPPEMENT D'APPLICATION D'INTERNET/INTRANET</span>
+        <span> ({{selectedParcours}})</span>
+      }@else if (selectedParcours==='RPM') {
+        <span>RELATION PUBLIQUE ET MULTIMEDIA</span>
+        <span> ({{selectedParcours}})</span>
+      }@else {
+        <span>ADMINISTRATION ECONOMIQUE ET SOCIALE</span>
+        <span> ({{selectedParcours}})</span>
+      }
+      </b>
+    </h6>
+
+    <div>
+      <b>I-RENSEIGNEMENTS</b> <br />
+      <p>
+        NOM :
+        ...........................................................................................................................................................................
+      </p>
+      <p>
+        PRENOM(S) :
+        ...............................................................................................................................................................
+      </p>
+      <p>
+        NE(E) LE : ........................... à
+        ........................................................................................................................................
+      </p>
+      <p>
+        NATIONALITE :
+        .........................................................................................................................................................
+      </p>
+      <p>
+        SITUATION FAMILIALE :
+        .........................................................................................................................................
+      </p>
+      <p>
+        SEXE :
+        ...........................................................................................................................................................................
+      </p>
+      <p>
+        FILS OU FILLE DE :
+        ....................................................................................................................................................
+      </p>
+      <p>
+        ET DE :
+        ...........................................................................................................................................................................
+      </p>
+      <p>
+        ADRESSE :
+        .....................................................................................................................................................................
+      </p>
+      <p>
+        TEL :
+        ..............................................................................................................................................................................
+      </p>
+
+      <b>II-RENSEIGNEMENTS</b> <br />
+      <table>
+        <thead>
+          <th>ANNEE SCOLAIRE</th>
+          <th>CLASSE</th>
+          <th>ETABLISSEMENT</th>
+          <th>RESULTAT</th>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <div class="footer">
+      <b>III-RENSEIGNEMENTS</b> <br />
+      <div class="line">
+        <p>1. BACCLAUREAT DE L'ENSEIGNEMENT</p>
+        <p>GENERALE : ....................</p>
+        <p>TECHNIQUE : ...................</p>
+      </div>
+      <div class="line">
+        <p>2.SERIE : ................</p>
+        <p>NUMERO : ........;........</p>
+        <p>ANNEE : ................</p>
+        <p>CENTRE : ................</p>
+      </div>
+      <div class="line">
+        <p>
+          <b>CIN : ......................................................</b>
+        </p>
+        <p>
+          <b
+            >Délivré le :
+            ......................................................</b
+          >
+        </p>
+        <p><b>à : ......................................................</b></p>
+      </div>
+      <br /><br /><br />
+
+      <p class="signature">SIGNATURE DE L'ETUDIANT(E)</p>
+    </div>
+  </div>
+</div>

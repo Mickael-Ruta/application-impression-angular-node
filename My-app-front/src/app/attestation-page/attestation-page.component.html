@@ -1,0 +1,125 @@
+<div class="row">
+  <div class="col xl2 offset-xl10">
+    <button class="btn waves-effect waves-light light-blue white-text" style="margin-top: 7px;" (click)="generateAtt()">Imprimer</button>
+  </div>
+</div>
+
+<div id="impression">
+  @for (item of listEtudiant; track $index) {
+  <div class="attestation" id="attestation-{{ $index }}" style="margin: 20px 20px;">
+    <div class="header">
+      <div class="header-left">
+        <img src="../../assets/uf.jpg" alt="">
+      </div>
+      <div class="header-center">
+        <p>
+          UNIVERSITE DE FIANARANTSOA <br />
+          ECOLE DE MANAGEMENT ET D'INNOVATION <br />
+          TECHNOLOGIQUE <br />
+          E.M.I.T <br />
+          TEL : 034.87.042.16 - 033.70.470.00- <u>BP :</u> 1135 <br />
+          e.mail : renseignement&#64;emit.mg <br />
+          Site web : <u>www.emit.mg</u>
+        </p>
+      </div>
+      <div class="header-right">
+        <img src="../../assets/emit.jpg" alt="">
+      </div>
+    </div>
+
+    <p>N°2023-2024/01/UF/EMIT/SCO</p>
+
+    <div class="title">
+      <br />
+      <div class="text">
+        <p>ATTESTATION D'INSCRIPTION</p>
+      </div>
+    </div>
+
+    <div class="body">
+      <p>
+        <span>LE DIRECTEUR DE L'ECOLE DE MANAGEMENT ET D'INNOVATION </span>
+        TECHNOLOGIQUE DE L'UNIVERSITE DE FIANARANTSOA, SOUSSIGNE, <br />
+        Atteste que :
+        <b>{{ item.nom | uppercase }} {{ item.prenom | titlecase }}</b> est
+        régulièrement inscrit(e) comme étudiant(e) en
+        <b style="text-transform: uppercase;">
+          @if (item.niveau=="L1") {
+            Première année en license
+          }@else if(item.niveau=="L2"){
+            Deuxieme année en license
+          }
+          @else if(item.niveau=="L3"){
+            Troisième année en license
+          }
+          @else if(item.niveau=="M1"){
+            Première année en Master
+          }@else {
+            Deuxieme année en Master
+          }
+           ({{item.niveau}}),
+          </b> dans mon Etablissement durant
+        l'année universitaire : 2023 - 2024
+      </p>
+
+      <p>
+        Sous le numéro : <b>{{ item.matricule }}</b>
+      </p>
+      <p>
+        <b><u>Mention </u>:</b> {{ item.mention | uppercase }}
+        <b> <u>Parcours </u>: </b>
+        @if (item.mention == "DA2I") { Developpement d'Application d'Internet et
+        d'Intranet }@else if(item.mention=="RPM") { Relation Publique et
+        Multimedia }@else { Administration Economique et Social }
+      </p>
+    </div>
+
+    <table>
+      <thead>
+        <th>BANQUE</th>
+        <th>Montant</th>
+        <th>Date et Référence</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br /><br />
+
+    <div class="text-center">
+      <p>
+        En foi de quoi, la présente attestation lui est délivrée pour servir et
+        valoir ce que de droit.
+      </p>
+    </div>
+    <p class="text-right">Fianarantsoa, le ..........................</p>
+    <br />
+    <p class="text-left">
+      <b><u>N.B</u>:</b> Toute perte et usure de cette attestation entrainera
+      <br />
+      une péalisation de la somme de 2000 Ariary.
+    </p>
+
+    <footer>
+      <p>
+        Par le directeur et pour délégation <br />
+        Le Chef de Service de la Sclarité <br /><br />
+        RAKOTOARISOA Rindra <br />
+        Helisoa Bakoliniaina
+      </p>
+    </footer>
+  </div>
+
+  }
+</div>

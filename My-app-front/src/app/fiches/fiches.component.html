@@ -1,0 +1,64 @@
+<div class="card col xl3 offset-xl1" id="tay">
+  <div class="card-image">
+    <img src="../../assets/fiche.png" alt="" class="" />
+    <span class="card-title"></span>
+  </div>
+  <div class="card-content">
+    <p class="center black-text"><small>Fiche de Renseignement</small></p>
+  </div>
+  <div class="card-action center">
+    <a routerLink="/dashboard/fiche/renseignement" routerLinkActive="router-link-active" >
+      <button
+      type="button"
+      class="btn waves-effect waves-light light-blue darken-4"
+    >
+      imprimer
+
+    </button>
+    </a>
+  </div>
+</div>
+
+<div class="card col xl3">
+  <div class="card-image">
+    <img src="../../assets/attestation.png" alt="" />
+    <span class="card-title"></span>
+  </div>
+  <div class="card-content">
+    <p class="center black-text"><small>Attestation</small></p>
+  </div>
+  <div class="card-action center">
+    <a [routerLink]="['/dashboard/fiche/attestation']" routerLinkActive="router-link-active" >
+      <button
+      type="button"
+      class="btn waves-effect waves-light light-blue darken-4"
+    >
+      imprimer
+
+    </button>
+    </a>
+  </div>
+</div>
+<div class="card col xl3">
+  <div class="card-image">
+    <img src="../../assets/ce.png" alt="" />
+    <span class="card-title"></span>
+  </div>
+  <div class="card-content">
+    <p class="center black-text">
+      <small>Carte d'Etudiant</small>
+      <br />
+    </p>
+  </div>
+  <div class="card-action center">
+    <a [routerLink]="['/dashboard/fiche/ce']" routerLinkActive="router-link-active" >
+      <button
+      type="button"
+      class="btn waves-effect waves-light light-blue darken-4"
+    >
+      imprimer
+
+    </button>
+    </a>
+  </div>
+</div>

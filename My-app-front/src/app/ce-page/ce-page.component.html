@@ -1,0 +1,132 @@
+<!-- ce-page.component.html -->
+
+<div class="row" style="margin-bottom: 0px; margin-top: 5px;">
+  <div class="col xl3 offset-xl2">
+    <select [(ngModel)]="selectedNiveau" (change)="applyFilters()">
+      <option *ngFor="let niveau of niveaux" [value]="niveau">{{ niveau }}</option>
+    </select>
+  </div>
+  <div class="col xl3">
+    <select [(ngModel)]="selectedParcours" (change)="applyFilters()">
+      <option *ngFor="let parcours of parcours" [value]="parcours">{{ parcours }}</option>
+    </select>
+  </div>
+  <div class="col xl2">
+    <button class="btn waves-effect waves-light light-blue white-text" style="margin-top: 7px;" (click)="generateCE()">Imprimer</button>
+  </div>
+</div>
+
+<div style="margin-left: 100px;">
+<br>
+<div id="impression">
+  @for (ce of filteredEtudiants; track $index) {
+    <div class="hidden-ce" id="ce">
+      <div class="carte_etudiant">
+        <div class="left">
+          <div class="left-header">
+            <div class="text-center">
+              <small>UNIVERSITE DE FIANARANTSOA</small> <br />
+              <small
+                >ECOLE DE MANAGEMENT ET D'INNOVATION <br />
+                TECHNOLOGIQUE</small
+              >
+              <br />
+              <small>Année universitaire : 2023 - 2024</small> <br />
+              <small>Numéro d'inscription : <span>{{ce.matricule}}</span></small>
+              <br />
+              <br />
+            </div>
+            <div class="image"><img [src]="ce.image" alt=""></div>
+          </div>
+
+          <div class="left-body">
+            <div class="text-center">
+              <p>Mention : <span>{{ce.mention | uppercase}}</span></p>
+              <p>
+                Parcours :
+                <span>
+                  @if (ce.mention==='DA2I') {
+                    Developpement d'Application d'Internet et d'Intranet
+                  }@else if (ce.mention==='RPM') {
+                    Relation Publique et Multimedia
+                  }@else {
+                    Admnisitration Economique et Sociale
+                  }
+                </span>
+              </p>
+              <p>Niveau : <span>{{ce.niveau}}</span></p>
+            </div>
+
+            <div class="text">
+              <small>Nom :<span>{{ce.nom | uppercase}}</span></small> <br>
+              <small>Prénom : <span>{{ce.prenom | titlecase}}</span></small> <br>
+              <small>
+                Né(e) le : <span>{{ce.dateNaiss}}</span> à :
+                <span></span>
+              </small> <br>
+              <small>CIN : <span>{{ce.cin}}</span> du : <span>08/09/2020</span></small> <br>
+              <small>Adresse : <span>{{ce.adress}}</span></small> <br>
+            </div> <br>
+
+            <div class="card-e">
+              <div class="text-justify">
+                * Aucun acte scolaire le peut être accompli sans cette carte qui
+                <br />
+                est rigoureusement personnelle
+              </div>
+              <div class="text-justify">
+                * Toute perte et usure de cette entrainera une péalisation <br />
+                de la somme de Ar 10 000
+              </div>
+            </div>
+
+            <br />
+
+            <div class="left-footer">
+              <div class="flex">
+                <small> Signature de l'étudiant </small>
+                <small>DIRECTEUR DE L'EMIT</small>
+              </div>
+              <br /><br />
+              <p>RAKOTONIRAINY Hasina Lalaina</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="visite_medicale">
+            <div class="text-center">VISITE MEDICALE</div>
+            <p>
+              Nul ne peut se présenter à l'examen il n'a subit la visite <br />
+              médical organise par le Service de médicie préventive
+            </p>
+            <p class="text-center">Le médecin</p>
+          </div>
+
+          <div class="bibliotheque_universitaire">
+            <div class="text-center">BIBLIOTHEQUE UNIVERSITAIRE</div>
+            <p>
+              Le transfert de dossier de l'étudiant pour une autre Uniersité <br />
+              ne peut avoir lieu si cette carte signée du bibliothécaire et <br />
+              attestant que l'étudiant est un règle avec la bibliothèque, ne <br />
+              figre pas dans son dossier.
+            </p>
+            <p class="text-center">Le bibliothécaire</p>
+            <div class="image_scan"><qrcode [qrdata]="ce.matricule" size="256" level="'M'"></qrcode></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        @for (item of nombreGrade[ce.niveau]; track $index) {
+          <div class="background"></div>
+          <br />
+        }
+      </div>
+    </div>
+
+  }
+
+</div>
+
+</div>

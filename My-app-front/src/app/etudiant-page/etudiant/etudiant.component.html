@@ -1,0 +1,141 @@
+<div class="col xl10 offset-xl1" style="margin-top: 15px;">
+  <div class="input-field col xl5">
+    <input type="text" placeholder="Nom ou prenom ou matricule" [(ngModel)]="etudiantFilter" />
+    <i class="bx bx-search prefix"></i>
+  </div>
+  <div class="col col xl7" style="margin-top: 25px;">
+    <a
+      routerLink="/dashboard/etudiant/ajout"
+      class="btn btn-small waves-effect waves-ligth right light-blue darken-4"
+    >
+      <i class="bx bx-plus right"></i>
+      Ajouter
+    </a>
+  </div>
+</div>
+<div class="col xl10 offset-xl1 tableau">
+  <table class="responsive-table z-depth-1 ">
+    <thead>
+      <tr>
+        <th class="center">Image</th>
+        <th class="center">Matricule</th>
+        <th class="center">Nom</th>
+        <th class="center">Prenoms</th>
+        <th class="center">Date de naissance</th>
+        <th class="center">Mention</th>
+        <th class="center">Niveau</th>
+        <th class="center">Frais de scolarite</th>
+        <th class="center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+     @if (dataIsAvaible) {
+       @for (item of filteredList;track $index) {
+      <tr>
+        <td class="center">
+          @if (item.image) {
+            <img
+            [src]="item.image"
+            alt=""
+            class="rounded"
+            width="50"
+            height="50"
+          />
+          }@else {
+            <img
+            src="../../assets/hacker.png"
+            alt=""
+            width="50"
+            height="50"
+            class="rounded"
+          />
+          }
+        </td>
+        <td class="center">{{ item.matricule }}</td>
+        <td class="center">{{ item.nom | uppercase}}</td>
+        <td class="center">{{ item.prenom | titlecase }}</td>
+        <td class="center">{{ item.dateNaiss | date : "dd/MM/yyyy" }}</td>
+        <td class="center">{{ item.mention }}</td>
+        <td class="center">{{ item.niveau }}</td>
+        <td class="center">
+          @if (item.frais) {
+            @if(item.cycle==="license"){
+              @if((item.frais.montant1===500000 )|| (item.frais.montant1 && item.frais.montant2)){
+                <span class="green-text green lighten-4">Paye</span>
+              }@else if(item.frais.montant1 <=500000 && !item.frais.montant2) {
+                <span class="yellow-text text-darken-4 yellow lighten-4">Par Tranche</span>
+              }
+            }
+             @else {
+              @if((item.frais.montant1===700000 )|| (item.frais.montant1 && item.frais.montant2)){
+                <span class="green-text green lighten-4">Paye</span>
+              }@else if(item.frais.montant1 <=700000 && !item.frais.montant2) {
+                <span class="yellow-text text-darken-4 yellow lighten-4">Par Tranche</span>
+              }
+            }
+          }@else {
+          <span class="red-text red lighten-4">Non paye</span>
+          }
+        </td>
+        <td class="center">
+          <a
+            class="white waves-effect waves-green z-depth-0"
+            [routerLink]="['/dashboard/etudiant', item.matricule, 'modifier']"
+          >
+            <i class="bx bxs-pencil light-blue-text text-darken-4"></i>
+          </a>
+          <a href="#delete-modal" class="white waves-effect waves-red z-depth-0 modal-trigger" (click)="selectEtudiant(item)">
+            <i class="bx bx-trash red-text text-darken-1"></i>
+          </a>
+        </td>
+      </tr>
+      }
+     }@else {
+      <tr>
+        <td colspan="8"  class="center">
+          <div class="preloader-wrapper small active">
+            <div class="spinner-layer spinner">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+     }
+    </tbody>
+  </table>
+  <!-- <ul class="pagination">
+    <li class="waves-effect waves-blue">
+      <a><i class="bx bx-chevron-left"></i></a>
+    </li>
+    @for (item of listPagination; track $index) {
+    <li class="waves-effect waves-blue" [class]="paginationNumber===$index+1 ? 'active' : ''">
+      <a>{{ item }}</a>
+    </li>
+    }
+    <li class="waves-effect waves-blue">
+      <a><i class="bx bx-chevron-right"></i></a>
+    </li>
+  </ul> -->
+</div>
+
+    <div class="modal col xl4 offset-xl2 center" id="delete-modal" #deleteModal>
+      <div class="modal-content">
+        @if(selectedEtudiant){
+          <div class="col xl10 offset-xl1">
+            <p>Vous voulez supprimer vraiment <b>{{selectedEtudiant.nom | uppercase}} {{selectedEtudiant.prenom | titlecase}}</b></p>
+          </div>
+          <div class="col xl10 offset-xl1 center-align">
+           <button type="button" class="btn-small waves-effect waves-green green-text text-lighten-1 white" (click)="deleteEtudiant()"><b>OUI</b></button>
+           <button type="button" class="btn-small waves-effect waves-red red-text text-lighten-1 white modal-close"><b>NON</b></button>
+          </div>
+        }
+      </div>
+</div>

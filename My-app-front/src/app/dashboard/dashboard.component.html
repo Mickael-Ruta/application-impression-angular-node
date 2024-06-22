@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col xl2 nav-verticale z-depth-2 white" #navVerticale>
+    <h4 class="light-blue-text text-darken-4 left titre"><b>E-print</b></h4>
+    <i class="bx bxs-printer light-blue-text text-darken-4 right"></i>
+    @for (item of list; track $index) {
+    <a
+      [routerLink]="item.route"
+      routerLinkActive="route-active"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      <div class="col xl12 white liste">
+        <div class="col xl3">
+          <i [class]="item.icon" class="blue-text text-darken-4"></i>
+        </div>
+        <div class="col xl9 el">
+          <p class="blue-text text-darken-4">
+            <b>
+              {{ item.nom }}
+            </b>
+          </p>
+        </div>
+      </div>
+    </a>
+    }
+  </div>
+  <div class="col xl10 s12 m12 l12 white nav-horz z-depth-1">
+    <a href="#deconnexion" class="modal-trigger">
+      <span class="right">
+        <i class="bx bx-power-off light-blue-text text-darken-4 center"></i>
+      </span>
+    </a>
+
+    <div class="chip right">
+      @if(userConnected){
+        @if (userConnected.image) {
+          <img [src]="userConnected.image" alt="" />
+        }@else {
+          <img src="../../assets/hacker.png" alt="" />
+        }
+        {{userConnected.prenom | titlecase}}
+      }
+    </div>
+  </div>
+  <div class="col xl10">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div id="deconnexion" class="modal col xl4 offset-xl4 center">
+    <div class="modal-content">
+      <div class="col xl10 offset-xl1">
+        <p>Souhaitez vous vraiment se deconnecter?</p>
+        <div class="col xl12 center btn-choix">
+          <a
+            class="btn-small white green-text text-darken-4 waves-effect waves-green"
+            (click)="deconnexion()"
+          >
+            OUI
+          </a>
+          <a
+            class="btn-small white red-text text-darken-4 waves-effect waves-red modal-close"
+          >
+            NON
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

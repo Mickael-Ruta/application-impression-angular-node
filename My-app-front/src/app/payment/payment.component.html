@@ -1,0 +1,114 @@
+<div
+  class="col xl9 offset-xl1 z-depth-1"
+  style="margin-top: 50px; padding-top: 20px"
+>
+  <div class="col xl5 money">
+    <img src="../../assets/portefeuill.gif" alt="" class="responsive-img" />
+  </div>
+  <div class="col xl6 offset-xl1">
+    <form action="" [formGroup]="form" (submit)="payer()">
+      <div class="input-field col s12 l6 xl10">
+        <input type="text" id="first_name" placeholder="matricule" formControlName="matricule" />
+        <label class="active" for="first_name">matricule</label>
+      </div>
+      <div class="col xl2 btn-search">
+        <a
+          href="#search"
+          class="btn btn-small waves-effect waves-dark light-blue darken-1 modal-trigger"
+          (click)="getEtuFraisNotComplete()"
+        >
+          <i class="bx bx-user-plus center"></i>
+        </a>
+      </div>
+      <div class="input-field col s12 l6 xl12">
+        <label class="active" for="banque">Banque</label>
+        <select name="" id="banque" formControlName="banque">
+          <option value="Boa">BOA</option>
+          <option value="Bni">BNI</option>
+          <option value="Acces banque">ACCES BANQUE</option>
+        </select>
+      </div>
+      <div class="input-field col s12 xl6">
+        <input
+          type="number"
+          id="premier "
+          placeholder="Premier tranche"
+          formControlName="montant1"
+          #montant1
+        />
+        <label class="active" for="Premier">Premier montant</label>
+      </div>
+      <div class="input-field col s12 xl6">
+        <input
+          type="number"
+          id="second"
+          placeholder="Seconde tranche"
+          formControlName="montant2"
+        />
+        <label class="active" for="Premier">Second montant</label>
+      </div>
+      <div class="input-field col s12 l6 xl12">
+        <input type="text" id="ref" placeholder="ref" formControlName="ref" />
+        <label class="active" for="ref">Réference</label>
+      </div>
+      <div class="input-field col s12 l6 xl12">
+        <input type="date" id="ref" formControlName="date" />
+        <label class="active" for="ref">Date payment</label>
+      </div>
+      <div class="col xl12 center-align" style="margin-bottom: 20px">
+        <button
+          type="submit"
+          class="btn btn-small light-blue darken-4 waves-effect waves-light white-text"
+        >
+          Effectuer <i class="bx bx-money right"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="search" class="modal">
+  <div class="modal-content">
+    <table class="bordered highlight">
+      <thead>
+        <tr>
+          <th class="center">Matricule</th>
+          <th class="center">Nom</th>
+          <th class="center">Prenom</th>
+          <th class="center">Mention</th>
+          <th class="center">Niveau</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (dataIsAvaible) { @for (item of etudiantFraisNotComplete; track
+        $index) {
+        <tr (click)="selectEtu(item)">
+          <td class="center">{{ item.matricule }}</td>
+          <td class="center">{{ item.nom }}</td>
+          <td class="center">{{ item.prenom }}</td>
+          <td class="center">{{ item.mention }}</td>
+          <td class="center">{{ item.niveau }}</td>
+        </tr>
+        }}@else {
+          <tr>
+            <td colspan="5"  class="center">
+              <div class="preloader-wrapper small active">
+                <div class="spinner-layer spinner">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

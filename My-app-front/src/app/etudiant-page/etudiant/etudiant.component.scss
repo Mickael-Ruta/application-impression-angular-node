@@ -1,0 +1,51 @@
+table{
+  tbody{
+    tr{
+      td{
+        padding:5px 2px ;
+        a{
+          i{
+            font-size: 20px;
+            margin: 0px 3px;
+          }
+        }
+        span{
+          padding: 1px 3px;
+          border-radius: 5px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+.btn-small{
+  margin: 4px 4px ;
+}
+.pagination{
+  li{
+    margin: 0px 2px ;
+    &.active{
+      background-color: #01579b !important;
+    }
+  }
+}
+.spinner{
+  border-color: #01579b;
+}
+.modal{
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+.rounded{
+  border-radius: 100%;
+}
+
+table{
+  border-radius: 5px ;
+}
+
+.tableau{
+ max-height: 386px !important;
+  overflow-y: scroll;
+}

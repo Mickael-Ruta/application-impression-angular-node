@@ -1,0 +1,261 @@
+<div
+  class="col xl8 offset-xl2 z-depth-1"
+  style="margin-top: 40px; padding-top: 40px"
+>
+  <div class="col xl5">
+    <div class="col xl12">
+      <i
+        class="bx bx-chevron-left light-blue-text text-darken-4 retour"
+        [routerLink]="['/dashboard/etudiant']"
+      ></i>
+    </div>
+    <img
+      src="../../assets/college students.gif"
+      alt=""
+      srcset=""
+      class="col xl12"
+      style="margin-bottom: 20px"
+    />
+    <div class="col xl12 center">
+      <i
+        class="bx light-blue-text text-darken-4 indicator"
+        [class]="stepNumber >= 0 ? 'bxs-circle' : 'bx-circle'"
+      ></i>
+      <i
+        class="bx light-blue-text text-darken-4 indicator"
+        [class]="stepNumber >= 1 ? 'bxs-circle' : 'bx-circle'"
+      ></i>
+      <i
+        class="bx light-blue-text text-darken-4 indicator"
+        [class]="stepNumber >= 2 ? 'bxs-circle' : 'bx-circle'"
+      ></i>
+      <i
+        class="bx light-blue-text text-darken-4 indicator"
+        [class]="stepNumber >= 3 ? 'bxs-circle' : 'bx-circle'"
+      ></i>
+    </div>
+  </div>
+  <div class="col xl7">
+    <form action="" [formGroup]="form" #formulaire>
+      <div
+        [class]="stepNumber === 0 ? '' : 'display-none'"
+        formGroupName="etape1"
+        class="etape1"
+      >
+        <div class="input-field col s12 l6 xl3 offset-xl1 display-none">
+          <input type="file" placeholder="" formControlName="image" id="imageEtu" (change)="getImageEtu($event)"/>
+          <label class="active light-blue-text text-darken-4">Image</label>
+        </div>
+
+        <div class="input-field col s11 l6 xl8 offset-xl1">
+          <input
+            type="text"
+            id="first_name"
+            placeholder="Votre nom"
+            formControlName="nom"
+          />
+          <label for="first_name" class="active light-blue-text text-darken-4"
+            >Nom</label
+          >
+        </div>
+        <div class="input-field col s12 l6 xl2">
+          <i class="bx bx-camera light-blue-text text-darken-4" id="btn-cam" style="font-size: 35px; margin-top:5px;" #camera (click)="downImage()"></i>
+        </div>
+
+        <div class="input-field col s12 l6 xl7 offset-xl1">
+          <input
+            type="text"
+            placeholder="Votre prenom"
+            formControlName="prenom"
+          />
+          <label class="active light-blue-text text-darken-4">Prenoms</label>
+        </div>
+        <div class="input-field col s12 l6 xl3">
+          <input type="text" placeholder="" formControlName="matricule" />
+          <label class="active light-blue-text text-darken-4">Matricule</label>
+        </div>
+
+        <div class="input-field col s12 xl5 offset-xl1">
+          <label class="active light-blue-text text-darken-4">Mention</label>
+          <select formControlName="mention">
+            <option value="DA2I">DA2I</option>
+            <option value="RPM">RPM</option>
+            <option value="AES">AES</option>
+          </select>
+        </div>
+        <div class="input-field col s12 xl5">
+          <label class="active light-blue-text text-darken-4">Niveau</label>
+          <select formControlName="niveau">
+            <option value="L1">L1</option>
+            <option value="L2">L2</option>
+            <option value="L3">L3</option>
+            <option value="M1">M1</option>
+            <option value="M2">M2</option>
+          </select>
+        </div>
+        <div class="input-field col s12 xl10 offset-xl1">
+          <input type="date" id="email" formControlName="dateNaiss" />
+          <label for="email">Date de naissance </label>
+        </div>
+      </div>
+      <!-- ----- -->
+      <div
+        [class]="stepNumber === 1 ? '' : 'display-none'"
+        formGroupName="etape2"
+        class="etape2"
+      >
+        <div class="input-field col s12 l6 xl5 offset-xl1">
+          <input
+            type="text"
+            placeholder="Ex:0347196531"
+            formControlName="numTel"
+          />
+          <label class="active light-blue-text text-darken-4"
+            >Numero telephone</label
+          >
+        </div>
+        <div class="input-field col xl5">
+          <label class="active light-blue-text text-darken-4">Cycle</label>
+          <select formControlName="cycle">
+            <option value="license">License</option>
+            <option value="master">Master</option>
+          </select>
+        </div>
+        <div class="input-field col xl5 offset-xl1">
+          <label class="active light-blue-text text-darken-4">Sexe</label>
+          <select formControlName="sexe">
+            <option value="Homme">Homme</option>
+            <option value="femme">Femme</option>
+            <option value="Autres">Autres</option>
+          </select>
+        </div>
+        <div class="input-field col s12 l6 xl5">
+          <label class="active light-blue-text text-darken-4"
+            >Situation Matrimonial</label
+          >
+          <select formControlName="situationMatrimonial">
+            <option value="Marie">Marié</option>
+            <option value="Celibataire">Celibataire</option>
+          </select>
+        </div>
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input type="text" placeholder="Numero CIN" formControlName="cin" minlength="12" maxlength="12"/>
+          <label class="active light-blue-text text-darken-4">CIN</label>
+        </div>
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input type="text" placeholder="Adresse" formControlName="adress" />
+          <label class="active light-blue-text text-darken-4">Adresse</label>
+        </div>
+      </div>
+      <!-- ------- -->
+      <div
+        [class]="stepNumber === 2 ? '' : 'display-none'"
+        formGroupName="etape3"
+        class="etape3"
+      >
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input type="text" placeholder="Nom pere" formControlName="nomPere" />
+          <label class="active light-blue-text text-darken-4">Nom Pere</label>
+        </div>
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input
+            type="text"
+            placeholder="Prenoms pere"
+            formControlName="prenomPere"
+          />
+          <label class="active light-blue-text text-darken-4"
+            >Prenoms Pere</label
+          >
+        </div>
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input type="text" placeholder="Nom mere" formControlName="nomMere" />
+          <label class="active light-blue-text text-darken-4">Nom Mere</label>
+        </div>
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input
+            type="text"
+            placeholder="Prenoms mere"
+            formControlName="prenomMere"
+          />
+          <label class="active light-blue-text text-darken-4"
+            >Prenoms Mere</label
+          >
+        </div>
+      </div>
+      <!-- ----------- -->
+      <div
+        [class]="stepNumber === 3 ? '' : 'display-none'"
+        formGroupName="etape4"
+        class="etape4"
+      >
+        <div class="input-field col s12 xl10 offset-xl1">
+          <label class="active light-blue-text text-darken-4"
+            >Enseignement</label
+          >
+          <select formControlName="enseignementBacc">
+            <option value="general">General</option>
+            <option value="technique">Technique</option>
+          </select>
+        </div>
+        <div class="input-field col s12 l6 xl3 offset-xl1">
+          <input type="text" placeholder="Serie" formControlName="serieBacc" />
+          <label class="active light-blue-text text-darken-4">Serie</label>
+        </div>
+        <div class="input-field col s12 l6 xl3">
+          <input
+            type="text"
+            placeholder="ex:2011"
+            formControlName="anneeBacc"
+            minlength="4"
+            maxlength="4"
+          />
+          <label class="active light-blue-text text-darken-4">Annees</label>
+        </div>
+        <div class="input-field col s12 l6 xl4">
+          <input
+            type="text"
+            placeholder="Num Inscri"
+            formControlName="numIscriBacc"
+            minlength="7"
+            maxlength="7"
+          />
+          <label class="active light-blue-text text-darken-4">numInscri</label>
+        </div>
+        <div class="input-field col s12 l6 xl10 offset-xl1">
+          <input
+            type="text"
+            placeholder="Centre"
+            formControlName="centreBacc"
+          />
+          <label class="active light-blue-text text-darken-4">Centre</label>
+        </div>
+      </div>
+    </form>
+    <div class="col xl10 offset-xl1">
+      @if (stepNumber!==0) {
+      <a
+        class="btn btn-small waves-effect waves-light light-blue darken-4 margin left"
+        (click)="prevStep()"
+      >
+        <i class="bx bx-chevron-left left"></i>prev
+      </a>
+      } @if (stepNumber!==4) {
+      <a
+        class="btn btn-small waves-effect waves-light light-blue darken-4 margin right"
+        (click)="doRequest()"
+      >
+        @if (stepNumber===3){ @if(isUpdate===false){ Enregistrer }@else {
+        Modifier } }@else { next }
+        <i
+          class="bx right"
+          [ngClass]="{
+            'bx-chevron-right': stepNumber !== 3,
+            'bx-save': stepNumber === 3 && isUpdate == false,
+            'bx-pencil': stepNumber === 3 && isUpdate
+          }"
+        ></i
+      ></a>
+      }
+    </div>
+  </div>
+</div>

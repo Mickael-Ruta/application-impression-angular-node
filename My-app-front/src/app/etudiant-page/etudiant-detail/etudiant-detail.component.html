@@ -1,0 +1,101 @@
+<div class="col xl10 offset-xl1 center pad-marg">
+  @if(dataIsAvaible &&  etudiant){
+    <div class="col xl10 offset-xl1 z-depth-1">
+      <div class="col xl12">
+      </div>
+      <!-- image non prenoms -->
+      <div class="col xl10 offset-xl1">
+        <div class="col xl5">
+          <img src="../../../assets/DSC_0074.JPG" alt="" srcset="" class=" circle responsive-img" >
+        </div>
+        <div class="col xl5">
+          <h4>{{etudiant.nom |uppercase}}</h4>
+          <h6>{{etudiant.prenom | titlecase}}</h6>
+          <h6>{{etudiant.mention| titlecase}}</h6>
+          <h6>{{etudiant.niveau| titlecase}}</h6>
+          <h6>{{etudiant.matricule| titlecase}}</h6>
+        </div>
+      </div>
+      <!-- autres unformation  -->
+      <div class="col xl12 ">
+        <div class="col xl4">
+          <div class="col xl10 offset-xl1">
+            <h6>Phone : {{etudiant.numTel}}</h6>
+          </div>
+          <div class="col xl10 offset-xl1">
+            <h6>Adresse : {{etudiant.adress}}
+            </h6>
+          </div>
+          <div class="col xl10 offset-xl1">
+            <h6>Cin : {{etudiant.cin}}
+            </h6>
+          </div>
+          <div class="col xl10 offset-xl1">
+            <h6>Date naissance :{{etudiant.dateNaiss | date:'dd-mm-yyyy'}}
+            </h6>
+          </div>
+        </div>
+        <div class="col xl4">
+
+          <div class="col xl10 offset-xl1">
+            <h6>
+              {{etudiant.nomPere}}
+            </h6>
+          </div>
+          <div class="col xl10 offset-xl1">
+
+            <h6>
+              {{etudiant.prenomPere}}
+            </h6>
+          </div>
+          <div class="col xl10 offset-xl1">
+            <h6>
+              {{etudiant.nomMere}}
+            </h6>
+          </div>
+          <div class="col xl10 offset-xl1">
+            <h6>
+              {{etudiant.prenomMere}}
+            </h6>
+          </div>
+        </div>
+        <div class="col xl4" style="margin-bottom: 20px;">
+          <div class="col xl10 offset-xl1">
+            <h6>
+              {{etudiant.bacc.enseignement}} Serie : {{etudiant.bacc.serie}}
+            </h6>
+          </div>
+          <div class="col xl10 offset-xl1">
+            <h6>
+              {{etudiant.bacc.numIscri}}
+            </h6>
+          </div>
+          <div class="col xl10 offset-xl1">
+            <h6>
+              {{etudiant.bacc.annee}}
+            </h6>
+          </div>
+          <div class="col xl10 offset-xl1">
+            <h6>
+              {{etudiant.bacc.centre}}
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  }@else {
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

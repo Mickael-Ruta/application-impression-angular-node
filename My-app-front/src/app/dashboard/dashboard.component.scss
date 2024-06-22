@@ -1,0 +1,89 @@
+.chip {
+  background-color: #fff;
+}
+.nav-horz {
+  height: 50px;
+  padding-top: 10px;
+  i {
+    font-size: 25px;
+    color: linear-gradient(30deg, #bbdefb, #2196f3) !important;
+  }
+  span {
+    margin-left: 20px;
+    border-radius: 100%;
+    width: 35px;
+    padding-left: 5px;
+    padding-top: 2px;
+    &:hover {
+      background-color: #ebeaea;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+  }
+}
+.nav-verticale {
+  .bxs-printer{
+    font-size: 30px !important;
+  }
+  .titre{
+    margin-bottom: 50px;
+    margin-top: 5px;
+    font-family: cursive;
+  }
+  .liste {
+    margin-bottom: 15px;
+    border-radius: 5px;
+    padding: 0px 0px;
+    overflow-x: hidden;
+    height:45px;
+    .el{
+      height: inherit;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: #01579b !important;
+      transition: 0.5s;
+      p,i{
+        color: #fff !important;
+      }
+    }
+
+  }
+  i{
+    font-size: 22px;
+    margin-top: 13px;
+  }
+  p{
+    font-size: 15px;
+    margin-top: 13px;
+  }
+}
+.route-active{
+  .liste{
+    background-color: #01579b !important;
+  p,i{
+    color: #fff !important;
+  }
+  }
+}
+
+.modal{
+  border-radius: 10px;
+  overflow: hidden;
+  .modal-content{
+    a{
+      margin: 3px 5px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .btn-choix{
+      margin-bottom: 15px;
+    }
+  }
+}
+.preloader-wrapper{
+  margin-top: 15px;
+  .spinner{
+    border-color: #01579b;
+  }
+}

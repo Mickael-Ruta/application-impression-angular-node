@@ -1,0 +1,17 @@
+@import url('../node_modules/materialize-css/sass/materialize.scss');
+@import url('../node_modules/boxicons/css/boxicons.min.css');
+@import url('../node_modules/ngx-toastr/toastr.css');
+
+body{
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+}
+::-webkit-scrollbar {
+  width: 8px; /* Largeur de la barre de défilement */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d4d4d4; /* Couleur de la poignée de la barre de défilement */
+  border-radius: 5px; /* Bordure arrondie de la poignée */
+
+}
